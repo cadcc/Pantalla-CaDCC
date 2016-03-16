@@ -14,7 +14,7 @@ angular.module('pantallaCaDccApp')
       scope: {},
       templateUrl: 'views/directives/kioskito.html',
       controller: ['$scope', '$interval', '$http', function ($scope, $interval, $http) {
-        var pageSize = 13;
+        var pageSize = 12;
         $scope.currentPage = -1;
 
         var updateProductsSlice = function () {
