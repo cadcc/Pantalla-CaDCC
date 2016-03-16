@@ -1,0 +1,22 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+body {
+  padding: 0;
+  vertical-align: top;
+}
+
+.frame {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+}
+
+.vcenter_helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
