@@ -8,7 +8,7 @@
  * Controller of the pantallaCaDccApp
  */
 angular.module('pantallaCaDccApp')
-  .controller('MainCtrl', function ($scope, $element, $interval) {
+  .controller('MainCtrl', function ($scope, $element, $interval, $http) {
     var startColorChange = function () {
       var screen = $($element);
 
@@ -35,6 +35,20 @@ angular.module('pantallaCaDccApp')
       $scope.blinkInterval = $interval(changeColor, 200);
     };
 
-    // Each 2 hours
+    var checkNewVersion = function () {
+      $http.get('data/app.json')
+        .then(function (response) {
+          if ($scope.currentVersion !== undefined && $scope.currentVersion !== response.data.version) {
+            location.reload();
+            return;
+          }
+          $scope.currentVersion = response.data.version;
+        });
+    };
+
+    // Refresh screen each 2 hours
     $interval(startColorChange, 2 * 3600 * 1000);
+
+    // Check new version each minute
+    $interval(checkNewVersion, 60 * 1000);
   });
