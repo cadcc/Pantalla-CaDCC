@@ -1,4 +1,4 @@
-<div class="frame" style="background-color: #ffffff; padding: 10px 20px;" ng-style="{width: ($root.windowWidth / 2 - 9) + 'px', width: ($root.windowWidth / 2 - 9) + 'px', height: $root.windowHeight + 'px'}">
+<div class="frame" style="background-color: #ffffff; padding: 10px 20px;" ng-style="{width: ($root.windowWidth / 3 - 9) + 'px', width: ($root.windowWidth / 3 - 9) + 'px', height: $root.windowHeight + 'px'}">
   <div class="header" style="margin: 20px 0;">
     <h1>Kioskito autoservicio</h1>
   </div>
@@ -6,7 +6,7 @@
     <table class="table table-striped" style="margin-bottom: 0;">
      <tr ng-repeat="product in currentProducts">
       <td>{{ product.name }}</td>
-      <td>$ {{ product.price }}</td>
+      <td style="text-align: right;">$ {{ product.price }}</td>
      </tr>
     </table>
   </div>
