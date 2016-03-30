@@ -11,7 +11,14 @@ angular.module('pantallaCaDccApp')
   .directive('placeholder', function () {
     return {
       restrict: 'E',
-      scope: {},
-      templateUrl: 'views/directives/placeholder.html'
+      scope: {
+        size: '=',
+        showLogo : '@'
+      },
+      templateUrl: 'views/directives/placeholder.html',
+      controller: ['$scope', function ($scope) {
+        $scope.size = parseFloat($scope.size);
+        $scope.showLogo = $scope.showLogo === 'true';
+      }]
     };
 });

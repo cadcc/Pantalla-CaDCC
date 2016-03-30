@@ -46,9 +46,11 @@ angular.module('pantallaCaDccApp')
         });
     };
 
+    // startColorChange();
+
     // Refresh screen each 2 hours
     $interval(startColorChange, 2 * 3600 * 1000);
 
-    // Check new version each minute
+    // Check new app version each minute
     $interval(checkNewVersion, 60 * 1000);
   });

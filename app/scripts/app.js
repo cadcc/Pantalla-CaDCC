@@ -5,6 +5,22 @@ var setWindowDimensions = function (scope) {
   scope.windowHeight = window.innerHeight;
 };
 
+var updateListInterval = function (scope, dstKey, srcKey, pageSize) {
+
+  var currentPage = -1;
+
+  return function () {
+    currentPage += 1;
+
+    if (currentPage >= parseInt(scope[srcKey].length / pageSize) + 1) {
+      currentPage = 0;
+    }
+    var startIndex = (currentPage) * pageSize;
+
+    scope[dstKey] = scope[srcKey].slice(startIndex, startIndex + pageSize);
+  }
+};
+
 /**
  * @ngdoc overview
  * @name pantallaCaDccApp
@@ -25,14 +41,8 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
       })
       .otherwise({
         redirectTo: '/'
@@ -46,4 +56,9 @@ angular
         setWindowDimensions($rootScope);
       });
     });
+  })
+  .filter('joinList', function () {
+    return function (input, divider) {
+      return input.join(divider);
+    }
   });

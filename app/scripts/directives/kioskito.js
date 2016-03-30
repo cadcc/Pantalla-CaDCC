@@ -14,19 +14,10 @@ angular.module('pantallaCaDccApp')
       scope: {},
       templateUrl: 'views/directives/kioskito.html',
       controller: ['$scope', '$interval', '$http', function ($scope, $interval, $http) {
-        var pageSize = 12;
+        var pageSize = 14;
         $scope.currentPage = -1;
 
-        var updateProductsSlice = function () {
-          $scope.currentPage += 1;
-
-          if ($scope.currentPage >= parseInt($scope.allProducts.length / pageSize) + 1) {
-            $scope.currentPage = 0;
-          }
-          var startIndex = ($scope.currentPage) * pageSize;
-
-          $scope.currentProducts = $scope.allProducts.slice(startIndex, startIndex + pageSize);
-        };
+        var updateProductsSlice = updateListInterval($scope, 'currentProducts', 'allProducts', pageSize);
 
         $http.get('data/kioskito.json')
           .then(function (response) {

@@ -10,13 +10,15 @@
     <!-- bower:css -->
     <!-- endbower -->
     <!-- endbuild -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,700' rel='stylesheet' type='text/css'>
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
   <body ng-app="pantallaCaDccApp" ng-controller="MainCtrl">
     <kioskito></kioskito>
-    <placeholder></placeholder>
+    <placeholder size="1/2" show-logo="true"></placeholder>
+    <schedule></schedule>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -29,13 +31,16 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
     <!-- endbower -->
+    <script src="bower_components/moment/locale/es.js"></script>
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/directives/placeholder.js"></script>
     <script src="scripts/directives/kioskito.js"></script>
+    <script src="scripts/directives/schedule.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <!-- endbuild -->
 </body>

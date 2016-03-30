@@ -1,11 +1,9 @@
-<div class="frame" style="background-color: #ffffff; padding: 0 20px 0; margin-bottom: 0;" ng-style="{width: ($root.windowWidth / 2 - 10) + 'px', height: $root.windowHeight + 'px'}">
-  <div class="header" style="margin: 0 0 10px;">
-    <h1>Kioskito autoservicio</h1>
-  </div>
-  <table class="table table-striped" style="margin-bottom: 0; font-size: 2em;">
-   <tr ng-repeat="product in currentProducts">
-    <td>{{ product.name }}</td>
-    <td style="text-align: right;">$ {{ product.price }}</td>
-   </tr>
+<div class="frame frame_kioskito" ng-style="{width: ($root.windowWidth / 4 - 2) + 'px', height: $root.windowHeight + 'px'}">
+  <div class="header">Kioskito autoservicio</div>
+  <table class="table table-striped products">
+    <tr class="product" ng-repeat="product in currentProducts">
+      <td>{{ product.name }}</td>
+      <td class="price">$ {{ product.price }}</td>
+    </tr>
   </table>
 </div>

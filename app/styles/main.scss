@@ -6,6 +6,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 body {
   padding: 0;
   vertical-align: top;
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 }
 
 .frame {
@@ -19,4 +20,87 @@ body {
   display: inline-block;
   height: 100%;
   vertical-align: middle;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.frame_placeholder {
+  background-color: #FFF;
+  text-align: center;
+}
+
+.frame_kioskito {
+  background-color: #ffffff;
+  padding: 0 20px 0;
+  margin-bottom: 0;
+
+  .header {
+    margin: 20px 0;
+    font-size: 2em;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  .products {
+    margin-bottom: 0;
+    font-size: 1.5em;
+
+    .product {
+
+      .price {
+        text-align: right;
+      }
+    }
+  }
+}
+
+.frame_schedule {
+  text-align: left;
+  background-color: #3C3C3C;
+
+  .today {
+    padding: 20px 25px;
+    color: #fff;
+    text-align: right;
+    font-size: 2em;
+    font-weight: 300;
+
+    .day_name {
+      text-transform: capitalize;
+    }
+  }
+
+  .schedule {
+    font-size: 1.1em;
+    color: #fff;
+
+    .header {
+      padding: 10px 20px;
+      background-color: #313131;
+    }
+
+    .events {
+      margin-top: 5px;
+
+      .event {
+        padding: 5px 20px;
+
+        .code {
+          font-size: 0.8em;
+        }
+
+        .lecturers {
+          font-size: 0.8em;
+        }
+
+        .not_available {
+          text-align: center;
+        }
+      }
+    }
+  }
 }
