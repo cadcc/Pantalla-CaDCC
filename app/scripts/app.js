@@ -18,7 +18,7 @@ var updateListInterval = function (scope, dstKey, srcKey, pageSize) {
     var startIndex = (currentPage) * pageSize;
 
     scope[dstKey] = scope[srcKey].slice(startIndex, startIndex + pageSize);
-  }
+  };
 };
 
 /**
@@ -60,5 +60,5 @@ angular
   .filter('joinList', function () {
     return function (input, divider) {
       return input.join(divider);
-    }
+    };
   });
