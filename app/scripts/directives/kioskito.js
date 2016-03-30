@@ -23,7 +23,7 @@ angular.module('pantallaCaDccApp')
           .then(function (response) {
             $scope.allProducts = response.data;
             updateProductsSlice();
-            $interval(updateProductsSlice, 10000);
+            $interval(updateProductsSlice, 7500);
           }
         );
       }]

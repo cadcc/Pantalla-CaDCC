@@ -61,7 +61,7 @@ angular.module('pantallaCaDccApp')
         var updateEventsSlice = updateListInterval($scope, 'currentEvents', 'allEvents', pageSize);
 
         updateEventsSlice();
-        $interval(updateEventsSlice, 10000);
+        $interval(updateEventsSlice, 7500);
       }]
     };
 });
