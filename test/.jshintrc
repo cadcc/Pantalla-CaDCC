@@ -11,6 +11,7 @@
   "strict": true,
   "undef": true,
   "unused": true,
+  "requireCamelCaseOrUpperCaseIdentifiers": "ignoreProperties",
   "globals": {
     "angular": false,
     "inject": false

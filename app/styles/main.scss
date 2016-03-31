@@ -79,6 +79,11 @@ body {
     color: #fff;
 
     .header {
+      & > * {
+        display: inline-block;
+        vertical-align: middle;
+      }
+
       padding: 10px 20px;
       background-color: #313131;
 
