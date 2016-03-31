@@ -12,12 +12,10 @@ angular.module('pantallaCaDccApp')
     return {
       restrict: 'E',
       scope: {
-        size: '=',
         showLogo : '@'
       },
       templateUrl: 'views/directives/placeholder.html',
       controller: ['$scope', function ($scope) {
-        $scope.size = parseFloat($scope.size);
         $scope.showLogo = $scope.showLogo === 'true';
       }]
     };

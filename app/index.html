@@ -16,9 +16,15 @@
     <!-- endbuild -->
   </head>
   <body ng-app="pantallaCaDccApp" ng-controller="MainCtrl">
-    <kioskito></kioskito>
-    <placeholder size="1/2" show-logo="true"></placeholder>
-    <schedule></schedule>
+    <div class="col-md-3">
+      <kioskito></kioskito>
+    </div>
+    <div class="col-md-6">
+      <placeholder show-logo="true"></placeholder>
+    </div>
+    <div class="col-md-3">
+      <schedule></schedule>
+    </div>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
