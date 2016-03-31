@@ -94,7 +94,7 @@ angular.module('pantallaCaDccApp')
               if ($scope.jsonData !== jsonData) {
 
                 if ($scope.eventsUpdatePromise !== undefined) {
-                  $scope.eventsUpdatePromise.cancel();
+                  $interval.cancel($scope.eventsUpdatePromise);
                 }
 
                 $scope.lastUpdate = now;
