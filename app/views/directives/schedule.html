@@ -1,21 +1,21 @@
-<div class="frame frame_schedule" ng-style="{width: ($root.windowWidth / 4 - 4) + 'px', height: $root.windowHeight + 'px'}">
+<div class="frame frame_schedule" ng-style="{width: $root.parseInt($root.windowWidth / 4) + 'px', height: $root.windowHeight + 'px'}">
   <div class="today">
     <div class="day_name">{{ currentDate.format('dddd') }}</div>
     <div>{{ currentDate.format('DD [de] MMMM') }}</div>
     <div>{{ currentDate.format('HH:mm:ss') }}</div>
   </div>
   <div class="schedule">
-    <div class="header">Horario</div>
+    <div class="header">Horario <span class="last_update" ng-show="lastUpdate">(actualizado {{ lastUpdate.fromNow() }})</span></div>
     <div class="events">
       <div class="event" ng-repeat="event in currentEvents">
         <div class="code">{{ ::event.codigo }}</div>
         <div class="ellipsis">{{ ::event.nombre }}</div>
         <div class="lecturers ellipsis">{{ ::event.profesores || ['Sin información'] | joinList:' / ' }}</div>
         <div>{{ ::event.tipo }}</div>
-        <div>{{ ::event.horario || 'Sin información' }} <span ng-show="event.salas">en {{ event.salas | joinList:' / ' }}</span></div>
+        <div>{{ ::event.horario || 'Sin información' }} <span ng-show="event.salas.length > 0">en {{ event.salas | joinList:' / ' }}</span></div>
       </div>
       <div class="event" ng-hide="currentEvents.length > 0">
-        <div class="not_available">No disponible</div>
+        <div class="not_available">No hay eventos en este bloque</div>
       </div>
     </div>
   </div>

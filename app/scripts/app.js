@@ -57,6 +57,9 @@ angular
       });
     });
   })
+  .run(function ($rootScope) {
+    $rootScope.parseInt = parseInt;
+  })
   .filter('joinList', function () {
     return function (input, divider) {
       return input.join(divider);
