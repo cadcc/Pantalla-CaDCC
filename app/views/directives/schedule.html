@@ -5,7 +5,7 @@
     <div>{{ currentDate.format('HH:mm:ss') }}</div>
   </div>
   <div class="schedule">
-    <div class="header">Horario <span class="last_update" ng-show="lastUpdate">(actualizado {{ lastUpdate.fromNow() }})</span></div>
+    <div class="header">Horario <span class="last_update" ng-show="lastUpdate">(último cambio {{ lastUpdate.fromNow() }})</span></div>
     <div class="events">
       <div class="event" ng-repeat="event in currentEvents">
         <div class="code">{{ ::event.codigo }}</div>
