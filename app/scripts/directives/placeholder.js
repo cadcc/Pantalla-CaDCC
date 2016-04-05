@@ -11,12 +11,21 @@ angular.module('pantallaCaDccApp')
   .directive('placeholder', function () {
     return {
       restrict: 'E',
-      scope: {
-        showLogo : '@'
-      },
+      scope: {},
       templateUrl: 'views/directives/placeholder.html',
-      controller: ['$scope', function ($scope) {
-        $scope.showLogo = $scope.showLogo === 'true';
+      controller: ['$scope', '$interval', '$http', function ($scope, $interval, $http){
+        var pageSize = 1;
+        $scope.currentPage = -1;
+
+        var updateImages = updateListInterval($scope, 'currentImage', 'allImages', pageSize);
+
+        $http.get('data/placeholder.json')
+          .then(function (response) {
+              $scope.allImages = response.data;
+              updateImages();
+              $interval(updateImages, 7500);
+            }
+          );
       }]
     };
 });

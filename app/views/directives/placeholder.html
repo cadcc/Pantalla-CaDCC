@@ -1,4 +1,4 @@
 <div class="frame frame_placeholder" ng-style="{height: $root.windowHeight + 'px'}">
   <span class="vcenter_helper"></span>
-  <img src="images/casillerest.png" style="width: 90%;" ng-show="showLogo" />
+  <img ng-src="{{ currentImage[0].path }}" style="width: {{ currentImage[0].width }}%;" />
 </div>
