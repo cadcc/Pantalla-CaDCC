@@ -112,4 +112,4 @@ angular.module('pantallaCaDccApp')
         $interval(updateEvents, 60000);
       }]
     };
-});
+  });

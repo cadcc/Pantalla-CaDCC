@@ -17,7 +17,7 @@ angular.module('pantallaCaDccApp')
         $scope.currentImage = -1;
 
         var updateImages = function () {
-          $scope.currentImage = ($scope.currentImage + 1)%$scope.allImages.length;
+          $scope.currentImage = ($scope.currentImage + 1) % $scope.allImages.length;
         };
 
         $http.get('data/placeholder.json')
@@ -29,4 +29,4 @@ angular.module('pantallaCaDccApp')
           );
       }]
     };
-});
+  });
