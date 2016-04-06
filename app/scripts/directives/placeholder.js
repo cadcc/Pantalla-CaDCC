@@ -13,20 +13,47 @@ angular.module('pantallaCaDccApp')
       restrict: 'E',
       scope: {},
       templateUrl: 'views/directives/placeholder.html',
-      controller: ['$scope', '$interval', '$http', function ($scope, $interval, $http){
+      controller: ['$scope', '$interval', '$http', function ($scope, $interval, $http) {
+        var spreadsheetId = '1xzf6jE0dUD4Nz-NiGvOLyEOefqxMy1cs2jn6ayyV21E';
+        var url = 'https://spreadsheets.google.com/feeds/list/' + spreadsheetId + '/2/public/values?alt=json';
+
         $scope.currentImage = -1;
 
-        var updateImages = function () {
+        var nextImage = function () {
           $scope.currentImage = ($scope.currentImage + 1) % $scope.allImages.length;
         };
+        var updateImages = function () {
+          $http.get(url)
+            .then(function (response) {
+                var jsonData = JSON.stringify(response.data);
 
-        $http.get('data/placeholder.json')
-          .then(function (response) {
-              $scope.allImages = response.data;
-              updateImages();
-              $interval(updateImages, 10000);
-            }
-          );
+                if ($scope.jsonData !== jsonData) {
+
+                  if ($scope.eventsUpdatePromise !== undefined) {
+                    $interval.cancel($scope.eventsUpdatePromise);
+                  }
+
+                  $scope.jsonData = jsonData;
+                  var newImages = [];
+
+                  angular.forEach(response.data.feed.entry, function (image) {
+                    newImages.push({
+                      'path': image.gsx$path.$t,
+                      'width': image.gsx$width.$t
+                    });
+                  });
+
+                  $scope.allImages = newImages;
+
+                  nextImage();
+                  $scope.eventsUpdatePromise = $interval(nextImage, 10000);
+                }
+              }
+            );
+        };
+
+        updateImages();
+        $interval(updateImages, 60000);
       }]
     };
   });
