@@ -14,7 +14,7 @@ angular.module('pantallaCaDccApp')
       scope: {},
       templateUrl: 'views/directives/placeholder.html',
       controller: ['$scope', '$interval', '$http', function ($scope, $interval, $http) {
-        var spreadsheetId = '1xzf6jE0dUD4Nz-NiGvOLyEOefqxMy1cs2jn6ayyV21E';
+        var spreadsheetId = '1gWuiF0PrEzWPntdiyuVgcGTZxx6ABnJEXnwNztejZsg';
         var url = 'https://spreadsheets.google.com/feeds/list/' + spreadsheetId + '/2/public/values?alt=json';
 
         $scope.currentImage = -1;
