@@ -14,16 +14,17 @@ angular.module('pantallaCaDccApp')
       scope: {},
       templateUrl: 'views/directives/placeholder.html',
       controller: ['$scope', '$interval', '$http', function ($scope, $interval, $http){
-        var pageSize = 1;
-        $scope.currentPage = -1;
+        $scope.currentImage = -1;
 
-        var updateImages = updateListInterval($scope, 'currentImage', 'allImages', pageSize);
+        var updateImages = function () {
+          $scope.currentImage = ($scope.currentImage + 1)%$scope.allImages.length;
+        };
 
         $http.get('data/placeholder.json')
           .then(function (response) {
               $scope.allImages = response.data;
               updateImages();
-              $interval(updateImages, 7500);
+              $interval(updateImages, 10000);
             }
           );
       }]
