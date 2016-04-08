@@ -15,15 +15,15 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="pantallaCaDccApp" ng-controller="MainCtrl">
+  <body ng-app="pantallaCaDccApp" ng-controller="MainCtrl" ng-style="{'background-color': backgroundColor}">
     <div class="col-md-3">
-      <kioskito></kioskito>
+      <kioskito ng-hide="$root.isScreenRefreshing"></kioskito>
     </div>
     <div class="col-md-6">
-      <placeholder show-logo="true"></placeholder>
+      <placeholder show-logo="true" ng-hide="$root.isScreenRefreshing"></placeholder>
     </div>
     <div class="col-md-3">
-      <schedule></schedule>
+      <schedule ng-hide="$root.isScreenRefreshing"></schedule>
     </div>
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -43,6 +43,7 @@
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/libs.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/directives/placeholder.js"></script>
     <script src="scripts/directives/kioskito.js"></script>

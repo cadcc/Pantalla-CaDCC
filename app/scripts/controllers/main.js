@@ -8,19 +8,27 @@
  * Controller of the pantallaCaDccApp
  */
 angular.module('pantallaCaDccApp')
-  .controller('MainCtrl', function ($scope, $element, $interval, $http) {
-    var startColorChange = function () {
-      var screen = $($element);
+  .controller('MainCtrl', function ($scope, $rootScope, $interval, $http) {
 
-      screen.children().hide();
+    // Check new app version each minute
+    $scope.checkNewVersionTime = 60 * 1000;
+
+    // Refresh screen each 2 hours
+    $scope.startColorChangeTime = 2 * 3600 * 1000;
+
+    $scope.backgroundColor = '#FFFFFF';
+
+    var startColorChange = function () {
+
+      $rootScope.isScreenRefreshing = true;
 
       var colors = ['#FF0000', '#00FF00', '#0000FF'];
       var count = 12;
 
       var restoreColor = function () {
         $interval.cancel($scope.blinkInterval);
-        screen.css('background-color', '#FFFFFF');
-        screen.children().show();
+        $scope.backgroundColor = '#FFFFFF';
+        $rootScope.isScreenRefreshing = false;
       };
 
       var changeColor = function () {
@@ -28,7 +36,7 @@ angular.module('pantallaCaDccApp')
           restoreColor();
           return;
         }
-        screen.css('background-color', colors[count % colors.length]);
+        $scope.backgroundColor = colors[count % colors.length];
         count -= 1;
       };
 
@@ -48,9 +56,6 @@ angular.module('pantallaCaDccApp')
 
     // startColorChange();
 
-    // Refresh screen each 2 hours
-    $interval(startColorChange, 2 * 3600 * 1000);
-
-    // Check new app version each minute
-    $interval(checkNewVersion, 60 * 1000);
+    $interval(startColorChange, $scope.startColorChangeTime);
+    $interval(checkNewVersion, $scope.checkNewVersionTime);
   });

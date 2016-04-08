@@ -12,12 +12,14 @@ describe('Controller: MainCtrl', function () {
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
     MainCtrl = $controller('MainCtrl', {
-      $scope: scope
+      $scope: scope,
+      $element: document.createElement('div')
       // place here mocked dependencies
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(MainCtrl.awesomeThings.length).toBe(3);
+  it('should refresh times be set', function () {
+    expect(MainCtrl.checkNewVersionTime).toBe(60000);
+    expect(MainCtrl.startColorChangeTime).toBe(7200000);
   });
 });
