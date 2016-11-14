@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc function
- * @name pantallaCaDccApp.directive:Kioskito
+ * @name pantallaCaDccApp.directive:Scroller
  * @description
- * # Kioskito
+ * # Scroller
  * Directive of the pantallaCaDccApp
  */
 angular.module('pantallaCaDccApp')
@@ -14,46 +14,43 @@ angular.module('pantallaCaDccApp')
       scope: {},
       templateUrl: 'views/directives/scroller.html',
       controller: ['$scope', '$interval', '$http', function ($scope, $interval, $http) {
+
         var spreadsheetId = '1gWuiF0PrEzWPntdiyuVgcGTZxx6ABnJEXnwNztejZsg';
-        var url = 'https://spreadsheets.google.com/feeds/list/' + spreadsheetId + '/2/public/values?alt=json';
 
-        $scope.currentImage = -1;
-
-        var nextImage = function () {
-          $scope.currentImage = ($scope.currentImage + 1) % $scope.allImages.length;
-        };
-        var updateImages = function () {
+        var url = 'https://spreadsheets.google.com/feeds/list/' + spreadsheetId + '/3/public/values?alt=json';
+        $scope.currentPage = -1;
+        $scope.currentDate = new Date();
+        var updateBirthdays = function () {
           $http.get(url)
-            .then(function (response) {
+              .then(function (response) {
                 var jsonData = JSON.stringify(response.data);
-
                 if ($scope.jsonData !== jsonData) {
-
                   if ($scope.eventsUpdatePromise !== undefined) {
                     $interval.cancel($scope.eventsUpdatePromise);
                   }
-
                   $scope.jsonData = jsonData;
-                  var newImages = [];
-
-                  angular.forEach(response.data.feed.entry, function (image) {
-                    newImages.push({
-                      'path': image.gsx$path.$t,
-                      'width': image.gsx$width.$t
-                    });
-                  });
-
-                  $scope.allImages = newImages;
-
-                  nextImage();
-                  $scope.eventsUpdatePromise = $interval(nextImage, 10000);
+                  var newBirthday = [];
+                  var months = ['enero',
+                                'febrero',
+                                'marzo',
+                                'abril',
+                                'mayo',
+                                'junio',
+                                'julio',
+                                'agosto',
+                                'septiembre',
+                                'octubre',
+                                'noviembre',
+                                'diciembre'];
+                  newBirthday = response.data.feed.entry[$scope.currentDate.getDate()-1]['gsx$'+months[$scope.currentDate.getMonth()]].$t,
+                  $scope.birthday = newBirthday;
                 }
               }
             );
         };
-
-        updateImages();
-        $interval(updateImages, 60000);
+        updateBirthdays();
+        $interval(updateBirthdays, 60000);
       }]
     };
   });
+

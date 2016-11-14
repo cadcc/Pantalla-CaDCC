@@ -1,6 +1,10 @@
-<div class="frame frame_placeholder" ng-style="{height: '100px'}">
-  <span class="vcenter_helper"></span>
-  <div ng-repeat="scroller in allScrollers" ng-src="{{ scroller.path }}" ng-show=""
-       style="width: {{ image.width }}%;">
-  </div>
+<div class="frame frame_scroller" name="scroller" ng-style="{height: 50 + 'px'}">
+  <div class="table table-striped birthdays" id="scroller">
+    <h4 class="birthday" ng-if="birthday">
+      Hoy es el cumpleaños de {{ birthday }}. Celebremos!
+    </h4>
+    <h4 class="birthday" ng-if="birthday==''">
+      Hoy no hay cumpleaños DCCianos, pero celebremos igual! Ven a la Salita :D
+    </h4>
+  </table>
 </div>

@@ -17,14 +17,17 @@
   </head>
   <body ng-app="pantallaCaDccApp" ng-controller="MainCtrl" ng-style="{'background-color': backgroundColor}">
     <div class="col-md-9">
-      <div><scroller ng-hide="$root.isScreenRefreshing">Scroller</scroller></div>
-    <div class="col-md-3">
-      <kioskito ng-hide="$root.isScreenRefreshing"></kioskito>
-    </div>
-    <div class="col-md-6">
-      <placeholder show-logo="true" ng-hide="$root.isScreenRefreshing"></placeholder>
-    </div>
-      <div></div>
+        <div class="">
+            <scroller ng-hide="$root.isScreenRefreshing">Chupenelpicos</scroller>
+        </div>
+        <div class="">
+            <div class="col-md-4">
+                <kioskito ng-hide="$root.isScreenRefreshing"></kioskito>
+            </div>
+            <div class="col-md-8">
+                <placeholder show-logo="true" ng-hide="$root.isScreenRefreshing"></placeholder>
+            </div>
+        </div>
     </div>
     <div class="col-md-3">
       <schedule ng-hide="$root.isScreenRefreshing"></schedule>
@@ -51,6 +54,7 @@
     <script src="scripts/directives/placeholder.js"></script>
     <script src="scripts/directives/kioskito.js"></script>
     <script src="scripts/directives/schedule.js"></script>
+    <script src="scripts/directives/scroller.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/about.js"></script>
     <!-- endbuild -->
