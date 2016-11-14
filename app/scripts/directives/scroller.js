@@ -42,7 +42,7 @@ angular.module('pantallaCaDccApp')
                                 'octubre',
                                 'noviembre',
                                 'diciembre'];
-                  newBirthday = response.data.feed.entry[$scope.currentDate.getDate()]['gsx$'+months[$scope.currentDate.getMonth()]].$t,
+                  newBirthday = response.data.feed.entry[$scope.currentDate.getDate()-1]['gsx$'+months[$scope.currentDate.getMonth()]].$t,
                   $scope.birthday = newBirthday;
                 }
               }
