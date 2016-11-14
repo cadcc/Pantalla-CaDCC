@@ -1,4 +1,4 @@
-<div class="frame frame_placeholder" ng-style="{height: $root.windowHeight + 'px'}">
+<div class="frame frame_placeholder" ng-style="{height: ($root.windowHeight-150) + 'px'}">
   <span class="vcenter_helper"></span>
   <img ng-repeat="image in allImages" ng-src="{{ image.path }}" ng-show="currentImage==$index"
        style="width: {{ image.width }}%;"/>
