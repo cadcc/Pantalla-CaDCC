@@ -1,11 +1,32 @@
-<div class="frame frame_scroller" name="scroller" ng-style="{height: 50 + 'px'}">
-  <div class="table table-striped birthdays" id="scroller">
-    <h4 class="birthday" ng-if="birthday">
-      Hoy es el cumpleaños de {{ birthday }}. Celebremos! &#127874
-    </h4>
-    <h4 class="birthday" ng-if="birthday==''">
-      Hoy no hay cumpleaños DCCianos, pero celebremos igual! Ven a la Salita &#128513
-    </h4>
-    <hr>
+<div class="frame frame_scroller" name="scroller" ng-style="{height: 40 + 'px'}">
+  <div class="birthdays" ng-show="currentScroller == 0">
+    <div class="col-md-12" style="vertical-align: center;">
+      <h4 class="birthday" ng-if="birthday" >
+        Hoy es el cumpleaños de {{ birthday }}. Celebremos! &#127874;
+      </h4>
+      <h4 class="birthday" style="vertical-align: center;" ng-if="birthday==''">
+        Hoy no hay cumpleaños DCCianos, pero celebremos igual! Ven a la Salita &#128513;
+      </h4>
+    </div>
   </div>
+  <div class="facebook col-md-12" ng-show="currentScroller == 1">
+    <div class="col-md-2">
+      <span class="fa fa-facebook"></span>
+    </div>
+    <div class="col-md-10">
+      Esto es un Scroller de Facebook
+    </div>
+  </div>
+  <div id="twitter" class="twitter col-md-12" ng-show="currentScroller == 2">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-10">
+      Esto es un scroller de Twitter
+  </div>
+  <div class="news col-md-12" ng-show="currentScroller == 3">
+    Esto es un scroller de Noticias
+  </div>
+  <br>
+  <hr>
 </div>

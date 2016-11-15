@@ -51,7 +51,6 @@ angular.module('pantallaCaDccApp')
               }
             );
         };
-
         updateImages();
         $interval(updateImages, 60000);
       }]

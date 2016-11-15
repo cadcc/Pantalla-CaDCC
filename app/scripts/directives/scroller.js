@@ -18,18 +18,31 @@ angular.module('pantallaCaDccApp')
         var spreadsheetId = '1gWuiF0PrEzWPntdiyuVgcGTZxx6ABnJEXnwNztejZsg';
 
         var url = 'https://spreadsheets.google.com/feeds/list/' + spreadsheetId + '/3/public/values?alt=json';
-        $scope.currentPage = -1;
+        $scope.pages = { '0': 'Cumpleaños',
+                         '1': 'Facebook',
+                         '2': 'Twitter',
+                         '3': 'Noticias'};
         $scope.currentDate = new Date();
+
+        $scope.currentScroller = -1;
+
+        var nextScroller = function () {
+          $scope.currentScroller = ($scope.currentScroller + 1) % Object.keys($scope.pages).length;
+        };
+
         var updateBirthdays = function () {
           $http.get(url)
               .then(function (response) {
                 var jsonData = JSON.stringify(response.data);
+
                 if ($scope.jsonData !== jsonData) {
+
                   if ($scope.eventsUpdatePromise !== undefined) {
                     $interval.cancel($scope.eventsUpdatePromise);
                   }
+                  
                   $scope.jsonData = jsonData;
-                  var newBirthday = [];
+                  
                   var months = ['enero',
                                 'febrero',
                                 'marzo',
@@ -42,14 +55,19 @@ angular.module('pantallaCaDccApp')
                                 'octubre',
                                 'noviembre',
                                 'diciembre'];
-                  newBirthday = response.data.feed.entry[$scope.currentDate.getDate()-1]['gsx$'+months[$scope.currentDate.getMonth()]].$t,
-                  $scope.birthday = newBirthday;
+                  
+                  $scope.birthday = response.data.feed.entry[$scope.currentDate.getDate()-1]['gsx$'+months[$scope.currentDate.getMonth()]].$t,
+                  nextScroller();
+                  $scope.eventsUpdatePromise = $interval(nextScroller, 5000);
                 }
               }
             );
         };
         updateBirthdays();
         $interval(updateBirthdays, 60000);
+        var updateTwitterFeed = function() {
+          var twitterAPI = require('node-twitter-api');
+        };
       }]
     };
   });

@@ -1,10 +1,17 @@
 <div class="frame frame_schedule" ng-style="{height: $root.windowHeight + 'px'}">
   <div class="today">
-    <div class="day_name">{{ currentDate.format('dddd') }}</div>
-    <div>{{ currentDate.format('DD [de] MMMM') }}</div>
-    <div>{{ currentDate.format('HH:mm:ss') }}</div>
+      <div class="day_name">{{ currentDate.format('dddd') }}</div>
+      <div>{{ currentDate.format('DD [de] MMMM') }}</div>
+      <div>{{ currentDate.format('HH:mm:ss') }}</div>
+      <div>
+        <img src="http://openweathermap.org/img/w/{{ temp.weather['0']['icon'] }}.png" 
+        style="margin: -10px;"/>
+        <bold style="font-size:20px; ">{{ temp.main.temp}}°C </bold>
+        <small style="font-size:14px">{{ temp.main.temp_max}}°C - {{ temp.main.temp_min }}°C
+        </small>
+      </div>
   </div>
-  <div class="schedule">
+  <div class="schedule col-md-12">
     <div class="header">Horario <span class="last_update" ng-show="lastUpdate">(último cambio {{ lastUpdate.fromNow() }})</span></div>
     <div class="events">
       <div class="event" ng-repeat="event in currentEvents">

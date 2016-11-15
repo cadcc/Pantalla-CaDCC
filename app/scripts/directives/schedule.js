@@ -86,7 +86,6 @@ angular.module('pantallaCaDccApp')
         var updateEvents = function () {
           var now = moment();
           var url = 'https://www.u-cursos.cl/api/0/ingenieria/2/horario_institucion/agenda_diaria.json?departamento=5&fecha=' + now.format('YYYY-MM-DD');
-
           $http.get(url)
             .then(function (response) {
               var jsonData = JSON.stringify(response.data);
@@ -107,9 +106,30 @@ angular.module('pantallaCaDccApp')
             }
           );
         };
+        var updateTempSlice = updateListInterval($scope, 'temp');
 
+        var updateTemp = function(){
+          var now = moment();
+          var temp_url = 'http://api.openweathermap.org/data/2.5/weather?id=3871336&appid=f64f717e7b05415552ed1ee9a00ddbf8&units=metric';
+          $http.get(temp_url).then(function (response){
+            var temp_jsonData = JSON.stringify(response.data);
+            if($scope.temp_jsonData !== temp_jsonData){
+              if($scope.tempUpdatePromise !== undefined){
+                $interval.cancel($scope.tempUpdatePromise);
+                }
+              $scope.lastUpdate = now;
+              $scope.temp_jsonData = temp_jsonData;
+              $scope.temp = response.data;
+              updateEventsSlice();
+              $scope.eventsUpdatePromise = $interval(updateEventsSlice, 7500);
+              }
+            }
+          );
+        };
         updateEvents();
+        updateTemp();
         $interval(updateEvents, 60000);
+        $interval(updateTemp, 30000);
       }]
     };
   });

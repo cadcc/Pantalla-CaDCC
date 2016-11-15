@@ -5,9 +5,13 @@
     <title>Pantalla CaDCC</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-social/bootstrap-social.css" />
+    <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,700' rel='stylesheet' type='text/css'>
@@ -17,10 +21,10 @@
   </head>
   <body ng-app="pantallaCaDccApp" ng-controller="MainCtrl" ng-style="{'background-color': backgroundColor}">
     <div class="col-md-9">
-        <div class="">
-            <scroller ng-hide="$root.isScreenRefreshing">Chupenelpicos</scroller>
+        <div class="left">
+            <scroller ng-hide="$root.isScreenRefreshing"></scroller>
         </div>
-        <div class="">
+        <div class="left">
             <div class="col-md-4">
                 <kioskito ng-hide="$root.isScreenRefreshing"></kioskito>
             </div>
@@ -32,6 +36,9 @@
     <div class="col-md-3">
       <schedule ng-hide="$root.isScreenRefreshing"></schedule>
     </div>
+
+<div id="fb-root"></div>
+    
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -44,6 +51,7 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <!-- endbower -->
     <script src="bower_components/moment/locale/es.js"></script>
     <!-- endbuild -->
@@ -56,7 +64,6 @@
     <script src="scripts/directives/schedule.js"></script>
     <script src="scripts/directives/scroller.js"></script>
     <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/controllers/about.js"></script>
     <!-- endbuild -->
 </body>
 </html>
