@@ -1,10 +1,10 @@
 <div class="frame frame_scroller" name="scroller" ng-style="{height: 40 + 'px'}">
   <div class="birthdays col-md-12" ng-show="currentScroller == 0">
-    <div class="col-md-4" style="text-align: center;">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="text-align: center;">
       <h4 style="color: #E08E79;" >
         <i class="fa fa-birthday-cake fa-6" aria-hidden="true" ></i> Cumpleaños:</h4>
     </div>
-    <div class="col-md-8">
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
       <h4 class="birthday" ng-if="birthday" >
         Hoy es el cumpleaños de {{ birthday }}. Celebremos! &#127874;
       </h4>
@@ -13,7 +13,21 @@
       </h4>
     </div>
   </div>
-  <div class="facebook col-md-12" ng-show="currentScroller == 1">
+  <div class="efemerides col-md-12" ng-show="currentScroller == 1">
+    <div class="col-md-4" style="text-align: center;">
+      <h4 style="color: #A8DBA8;" >
+        <i class="fa fa-calendar fa-6" aria-hidden="true" ></i> Efemérides:</h4>
+    </div>
+    <div class="col-md-8">
+      <h4 class="efemerides" ng-if="efemeride" >
+        Hoy es el {{ efemeride }}.
+      </h4>
+      <h4 class="efemerides" ng-if="efemeride==''" >
+        No hay fechas especiales... pero revisa si tienes controles o tareas!
+      </h4>
+    </div>
+  </div>
+  <div class="facebook col-md-12" ng-show="currentScroller == 2">
     <div class="col-md-4" style="text-align: center;">
       <h4 style="color: rgb(59, 89, 152);">
         <i class="fa fa-facebook-square" aria-hidden="true"></i> CaDCCFCFM:</h4>
@@ -22,7 +36,7 @@
       <h4>Esto es un Scroller de Facebook</h4>
     </div>
   </div>
-  <div id="twitter" class="twitter col-md-12" ng-show="currentScroller == 2">
+  <div id="twitter" class="twitter col-md-12" ng-show="currentScroller == 3">
     <div class="col-md-4" style="text-align: center;">
       <h4 style="color: rgb(85, 172, 238);">
       <i class="fa fa-twitter" aria-hidden="true"></i> CaDCC: </h4>
@@ -31,7 +45,7 @@
       <h4>Esto es un scroller de Twitter</h4>
     </div>
   </div>
-  <div class="news col-md-12" ng-show="currentScroller == 3">
+  <div class="news col-md-12" ng-show="currentScroller == 4">
     <div class="col-md-4" style="text-align: center;">
       <h4 style="color: #f26522;">
         <i class="fa fa-rss" aria-hidden="true"></i> Últimas Noticias: </h4>

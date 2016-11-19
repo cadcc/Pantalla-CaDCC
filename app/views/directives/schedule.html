@@ -4,9 +4,10 @@
       <div>{{ currentDate.format('DD [de] MMMM') }}</div>
       <div>{{ currentDate.format('HH:mm:ss') }}</div>
       <div>
+        <small>{{ temp.weather[0]['description'] | titleCase }}<div ng-if="temp.weather[1]['description']">- {{ temp.weather[1]['description'] | titleCase }}</div></small>
         <img src="http://openweathermap.org/img/w/{{ temp.weather['0']['icon'] }}.png" 
         style="margin: -10px;"/>
-        <bold style="font-size:20px; ">{{ temp.main.temp}}°C </bold>
+        <bold style="font-size:20px; ">{{ temp.main.temp | ceil }}°C </bold>
         <small style="font-size:14px">{{ temp.main.temp_max}}°C - {{ temp.main.temp_min }}°C
         </small>
       </div>

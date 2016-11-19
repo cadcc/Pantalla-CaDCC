@@ -17,7 +17,14 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,700' rel='stylesheet' type='text/css'>
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
     <!-- endbuild -->
+      <staticContent>
+        <remove fileExtension=".woff" />
+        <remove fileExtension=".woff2" />
+        <mimeMap fileExtension=".woff" mimeType="application/font-woff" />
+        <mimeMap fileExtension=".woff2" mimeType="application/font-woff2" />
+      </staticContent>
   </head>
   <body ng-app="pantallaCaDccApp" ng-controller="MainCtrl" ng-style="{'background-color': backgroundColor}">
     <div class="col-md-9">
@@ -52,8 +59,13 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/moment/moment.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/jsSHA/src/sha.js"></script>
+    <script src="bower_components/ng-twitter-api/dist/ng-twitter-api.js"></script>
+    <script src="bower_components/query-string/query-string.js"></script>
+    <script src="bower_components/angular-oauth2/dist/angular-oauth2.js"></script>
     <!-- endbower -->
     <script src="bower_components/moment/locale/es.js"></script>
+    <script src="bower_components/ng-twitter-api/dist/ng-twitter-api.min.js"></script>
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
