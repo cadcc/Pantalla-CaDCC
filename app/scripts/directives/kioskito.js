@@ -17,7 +17,7 @@ angular.module('pantallaCaDccApp')
       controller: ['$scope', '$interval', '$http', function ($scope, $interval, $http) {
 
         var spreadsheetId = '1gWuiF0PrEzWPntdiyuVgcGTZxx6ABnJEXnwNztejZsg';
-        var pageSize = 14;
+        var pageSize = 13;
 
         var url = 'https://spreadsheets.google.com/feeds/list/' + spreadsheetId + '/1/public/values?alt=json';
         $scope.currentPage = -1;

@@ -1,5 +1,5 @@
 'use strict';
-/*exported setWindowDimensions, updateListInterval */
+/*exported setWindowDimensions, updateListInterval, randomString */
 
 var isList = function (obj) {
   return Object.prototype.toString.call(obj) === '[object Array]';
@@ -34,4 +34,12 @@ var updateListInterval = function (scope, dstKey, srcKey, pageSize, filters) {
 
     scope[dstKey] = elements.slice(startIndex, startIndex + pageSize);
   };
+};
+var randomString = function(length, chars){
+  var result = '';
+  for (var i = length; i > 0; --i){ 
+    result += chars[Math.round(Math.random() * (chars.length - 1))];
+  }
+  return result;
+
 };

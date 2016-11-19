@@ -9,6 +9,17 @@
  * Directive of the pantallaCaDccApp
  */
 angular.module('pantallaCaDccApp')
+  .filter('titleCase', function() {
+    return function(input) {
+      input = input || '';
+      return input.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    };
+  })
+  .filter('ceil', function(){
+    return function(input) {
+      return Math.ceil(+input);
+    };
+  })
   .directive('schedule', function () {
     return {
       restrict: 'E',
@@ -37,10 +48,10 @@ angular.module('pantallaCaDccApp')
         var sortEvents = function (events) {
           // Order events by start date and code
           return events.sort(function (a, b) {
-            if (a.fecha_ini === b.fecha_ini) {
+            if (a.fechaIni === b.fechaIni) {
               return (a.codigo < b.codigo) ? -1 : (a.codigo > b.codigo) ? 1 : 0;
             } else {
-              return (a.fecha_ini < b.fecha_ini) ? -1 : 1;
+              return (a.fechaIni < b.fechaIni) ? -1 : 1;
             }
           });
         };
@@ -74,7 +85,7 @@ angular.module('pantallaCaDccApp')
             }
 
             var filteredEvents = events.filter(function (event) {
-              return compareDates(filters.start, filters.end)(moment(event.fecha_ini));
+              return compareDates(filters.start, filters.end)(moment(event.fechaIni));
             });
 
             return sortEvents(filteredEvents);
@@ -86,7 +97,6 @@ angular.module('pantallaCaDccApp')
         var updateEvents = function () {
           var now = moment();
           var url = 'https://www.u-cursos.cl/api/0/ingenieria/2/horario_institucion/agenda_diaria.json?departamento=5&fecha=' + now.format('YYYY-MM-DD');
-
           $http.get(url)
             .then(function (response) {
               var jsonData = JSON.stringify(response.data);
@@ -108,8 +118,28 @@ angular.module('pantallaCaDccApp')
           );
         };
 
+        var updateTemp = function(){
+          var now = moment();
+          var tempUrl = 'http://api.openweathermap.org/data/2.5/weather?id=3871336&appid=f64f717e7b05415552ed1ee9a00ddbf8&units=metric&lang=es';
+          $http.get(tempUrl).then(function (response){
+            var tempJsonData = JSON.stringify(response.data);
+            if($scope.tempJsonData !== tempJsonData){
+              if($scope.tempUpdatePromise !== undefined){
+                $interval.cancel($scope.tempUpdatePromise);
+                }
+              $scope.lastUpdate = now;
+              $scope.tempJsonData = tempJsonData;
+              $scope.temp = response.data;
+              updateEventsSlice();
+              $scope.eventsUpdatePromise = $interval(updateEventsSlice, 7500);
+              }
+            }
+          );
+        };
         updateEvents();
+        updateTemp();
         $interval(updateEvents, 60000);
+        $interval(updateTemp, 30000);
       }]
     };
   });

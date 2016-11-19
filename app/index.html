@@ -5,27 +5,47 @@
     <title>Pantalla CaDCC</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-social/bootstrap-social.css" />
+    <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,700' rel='stylesheet' type='text/css'>
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
     <!-- endbuild -->
+      <staticContent>
+        <remove fileExtension=".woff" />
+        <remove fileExtension=".woff2" />
+        <mimeMap fileExtension=".woff" mimeType="application/font-woff" />
+        <mimeMap fileExtension=".woff2" mimeType="application/font-woff2" />
+      </staticContent>
   </head>
   <body ng-app="pantallaCaDccApp" ng-controller="MainCtrl" ng-style="{'background-color': backgroundColor}">
-    <div class="col-md-3">
-      <kioskito ng-hide="$root.isScreenRefreshing"></kioskito>
-    </div>
-    <div class="col-md-6">
-      <placeholder show-logo="true" ng-hide="$root.isScreenRefreshing"></placeholder>
+    <div class="col-md-9">
+        <div class="left">
+            <scroller ng-hide="$root.isScreenRefreshing"></scroller>
+        </div>
+        <div class="left">
+            <div class="col-md-4">
+                <kioskito ng-hide="$root.isScreenRefreshing"></kioskito>
+            </div>
+            <div class="col-md-8">
+                <placeholder show-logo="true" ng-hide="$root.isScreenRefreshing"></placeholder>
+            </div>
+        </div>
     </div>
     <div class="col-md-3">
       <schedule ng-hide="$root.isScreenRefreshing"></schedule>
     </div>
 
+<div id="fb-root"></div>
+    
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -38,8 +58,14 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/jsSHA/src/sha.js"></script>
+    <script src="bower_components/ng-twitter-api/dist/ng-twitter-api.js"></script>
+    <script src="bower_components/query-string/query-string.js"></script>
+    <script src="bower_components/angular-oauth2/dist/angular-oauth2.js"></script>
     <!-- endbower -->
     <script src="bower_components/moment/locale/es.js"></script>
+    <script src="bower_components/ng-twitter-api/dist/ng-twitter-api.min.js"></script>
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -48,6 +74,7 @@
     <script src="scripts/directives/placeholder.js"></script>
     <script src="scripts/directives/kioskito.js"></script>
     <script src="scripts/directives/schedule.js"></script>
+    <script src="scripts/directives/scroller.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <!-- endbuild -->
 </body>

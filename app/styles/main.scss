@@ -1,6 +1,8 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+@import "font-awesome/scss/font-awesome.scss";
+@import "bootstrap-social/bootstrap-social.scss";
 // endbower
 
 .col-md-3, .col-md-6 {
@@ -43,6 +45,10 @@ body {
   .logo {
     width: 350px;
   }
+}
+.frame_scroller{
+  padding: -10 -10 -10 -10px;
+  margin: -10 -10 -10 -10px;
 }
 
 .frame_kioskito {
